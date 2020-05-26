@@ -52,4 +52,15 @@ De: <h1> {{ titulo }} </h1>
 Para: <h1 v-text="titulo"></h1>
 -------------------------------
 A diretiva v-for pode ser usada com f ou in
+-------------------------------
+API na pasta "api", feita em node... npm start para inicilizar a API
 
+Enpoint das fotos: localhost:3000/v1/fotos
+-------------------------------
+Registramos o módulo do vue-resource para consumo de API no main.js, com o uso de um de seus artefatos (o $http)
+------------------
+Lifecycle hooks (gancho do ciclo de vida de um componente): o componente quando é criado ele passa por etapas, e em cada etapa dessa ele me permite executar um código.
+
+Uma etapa interessante desse ciclo de vida:
+
+Created: função chamada assim que o componente é criado.

@@ -20,19 +20,21 @@ export default {
   data() {
     return {
       titulo: "VueStudy",
-      fotos: [
-        {
-          url:
-            "https://www.catlicious.com.br/img/blog/0426d2d89e6b935a7ec8dfebd8e3cb044f34edd0.jpeg?w=750&h=425&fit=crop",
-          titulo: "gato"
-        },
-        {
-          url:
-            "https://www.catlicious.com.br/img/blog/0426d2d89e6b935a7ec8dfebd8e3cb044f34edd0.jpeg?w=750&h=425&fit=crop",
-          titulo: "gato2"
-        }
-      ]
+      fotos: []
     };
+  },
+  created() {
+    //assim que o componente eh criado, vamos buscar a principio os dados da nossa API
+    //this eh referente ao proprio componente, o vue.js consegue acessar facilmente as propriedades do objeto da funcao data
+    //$http eh o artefato do modulo vue-resource
+
+    //invocamos o servico get passando sua url, temos como retorno uma promise
+    let promise = this.$http.get('http://localhost:3000/v1/fotos');
+
+  //ao transformar os dados da resposta (res) em json, temos outra promise retornada
+    promise
+    .then(res => res.json())
+    .then(fotosRes => this.fotos = fotosRes, err => console.error(err));
   }
 };
 </script>
