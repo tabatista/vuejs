@@ -1,4 +1,6 @@
+<!-- Single file template -->
 <template>
+<!--apresentacao do componente-->
   <div id="app">
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
@@ -20,6 +22,7 @@
 </template>
 
 <script>
+//comportamento e dados do componente
 export default {
   name: 'app',
   data () {

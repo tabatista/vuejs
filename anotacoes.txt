@@ -1,0 +1,31 @@
+Comando para inicializar um projeto do Vue num diretório:
+
+vue init webpack-simple
+
+------------------
+Obs.:
+
+Babel: transpiler
+Webpack: module bundler
+live reloading: recurso do servidor para refletir imediatamente qualquer alteração em algum arquivo nosso no navegador
+------------------
+{{ variavel }} : interpolação, dentro da tag script do componente existe a função data, que retorna um objeto javascript com propriedades, que são acessíveis através do template em data-binding unidirecional (da fonte de dados - script - para o template).
+
+Exemplo:
+
+<template>
+...
+	<div>{{ msg }}}</div>
+</template>
+
+<script>
+export default {
+  name: 'app',
+  data () {
+    return {
+      msg: 'Hello World'
+    }
+  }
+}
+</script>
+------------------------------
