@@ -29,3 +29,27 @@ export default {
 }
 </script>
 ------------------------------
+Dentro do template é obrigatório envolver as tags dentro de uma tag container (uma div, por exemplo): uma tag pai que tenha filhos, é uma exigência do Vue.
+------------------------------
+Associar dado a atributo:
+
+Dentro de atributos default html não podemos utilizar interpolação. Quando queremos utilizar disso, temo que usar a diretiva "v-bind:" antes de um atributo em uma tag html (tendo o conceito de data-binding).
+
+Exemplo:
+
+De:  <img src="{{ foto.url }}">
+Para: <img v-bind:src="foto.url">
+
+Inclusive, para a sintaxe ficar mais enxuta, podemos tirar o "v-bind", deixando apenas os dois pontos, ficando:
+
+<img :src="foto.url">
+-------------------------------
+Se não quisermos usar interpolação e dar um conteúdo texto para uma tag, podemos usar a diretiva "v-text".
+
+Exemplo:
+
+De: <h1> {{ titulo }} </h1>
+Para: <h1 v-text="titulo"></h1>
+-------------------------------
+A diretiva v-for pode ser usada com f ou in
+
