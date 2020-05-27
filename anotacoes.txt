@@ -64,3 +64,11 @@ Lifecycle hooks (gancho do ciclo de vida de um componente): o componente quando 
 Uma etapa interessante desse ciclo de vida:
 
 Created: função chamada assim que o componente é criado.
+------------
+É uma boa prática criar os componentes dentro da pasta "components" em src. 
+
+Os componentes compartilhados/reutilizados devem ficar dentro da pasta "shared", dentro uma subpasta com o nome do componente.
+-------------
+É possível criar uma propriedade bind para o próprio componente e preenchê-la em outro componente ao importá-lo e utilizá-lo.
+-------------
+Para o estilo do componente não ser universal, basta na tag style inserir a proriedade scoped, logo o estilo pertence somente ao componente. É uma boa prática colocar o scoped em todo componente criado
