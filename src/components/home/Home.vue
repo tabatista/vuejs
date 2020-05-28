@@ -36,12 +36,19 @@ import Painel from "../shared/painel/Painel";
 import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva";
 import Botao from "../shared/botao/Botao";
 
+// importou  diretiva. Tem que adicionar na propriedade directives logo abaixo!
+import transform from '../../directives/Transform';
+
 export default {
   //onde declaramos como o componente sera utilizado
   components: {
     "meu-painel": Painel, //se fosse uma string sem o hifen poderia ser declarado sem aspas, mas eh uma boa pratica utilizar um prefixo
     "imagem-responsiva": ImagemResponsiva,
     "meu-botao": Botao
+  },
+
+  directives: {
+    'meu-transform': transform
   },
 
   //os dados do componente
