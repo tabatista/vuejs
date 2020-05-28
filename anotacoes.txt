@@ -100,3 +100,7 @@ De: v-on:click
 Para: @click
 
 Ou seja, os dois pontos : é o atalho do data-bind da fonte de dados para a view e o @ pé o data-bind da view para a fonte de dados.
+------------
+Para passarmos um evento ao um elemento componente importado, temos que usar o modificador .native
+
+Exemplo: <meu-botao @click.native="meuMetodo()"></meu-botao>

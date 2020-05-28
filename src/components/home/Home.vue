@@ -14,6 +14,8 @@
       <li class="lista-fotos-item" v-for="(foto, index) in fotosComFiltro" v-bind:key="index">
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
+          <!-- se passamos uma string, nao precisa dos dois pontos porque nao ha data-bind -->
+          <meu-botao tipo="button" rotulo="REMOVER" @click.native="remover(foto)"></meu-botao>
         </meu-painel>
       </li>
     </ul>
@@ -26,12 +28,14 @@
 //onde importamos outros componentes
 import Painel from "../shared/painel/Painel";
 import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva";
+import Botao from "../shared/botao/Botao";
 
 export default {
   //onde declaramos como o componente sera utilizado
   components: {
     "meu-painel": Painel, //se fosse uma string sem o hifen poderia ser declarado sem aspas, mas eh uma boa pratica utilizar um prefixo
-    "imagem-responsiva": ImagemResponsiva
+    "imagem-responsiva": ImagemResponsiva,
+    "meu-botao": Botao
   },
 
   //os dados do componente
@@ -56,6 +60,14 @@ export default {
       }
     }
   },
+
+  methods: {
+    //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
+    remover(foto) {
+      if (confirm("Confirma opercao?")) 
+        alert("Remover a foto " + foto.titulo);
+    }
+  },
   created() {
     //assim que o componente eh criado, vamos buscar a principio os dados da nossa API
     //this eh referente ao proprio componente, o vue.js consegue acessar facilmente as propriedades do objeto da funcao data
@@ -76,7 +88,6 @@ export default {
 </script>
 
 <style scoped>
-
 .centralizado {
   text-align: center;
 }
