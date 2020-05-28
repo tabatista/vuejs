@@ -13,7 +13,7 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="(foto, index) in fotosComFiltro" v-bind:key="index">
         <meu-painel :titulo="foto.titulo">
-          <imagem-responsiva v-meu-transform :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
+          <imagem-responsiva v-meu-transform="{incremento: 15, animate: true}" :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
           <!-- se passamos uma string, nao precisa dos dois pontos porque nao ha data-bind -->
           <meu-botao
             tipo="button"
