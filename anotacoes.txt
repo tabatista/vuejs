@@ -72,3 +72,18 @@ Os componentes compartilhados/reutilizados devem ficar dentro da pasta "shared",
 É possível criar uma propriedade bind para o próprio componente e preenchê-la em outro componente ao importá-lo e utilizá-lo.
 -------------
 Para o estilo do componente não ser universal, basta na tag style inserir a proriedade scoped, logo o estilo pertence somente ao componente. É uma boa prática colocar o scoped em todo componente criado
+----------
+Diretiva v-on:input -> "v-on" para indicar em qual evento: no caso do input, onde informamos a variável declarada na função data() e o que ela recebe.
+
+exemplo:
+
+v-on:inpit"filtro = $event.target.value";
+
+o $event é um objeto especial do Vue.js que sabe tudo sobre o evento disparado (no caso, o evento input), com o target (alvo) de quem disparou o evento e seu value (valor do input - do que foi digitado).
+
+Isso é um data-binding da view pra fonte dados (data()).
+
+A diretiva v-bind realiza uma associação que flui da fonte de dados para a view. Qualquer mudança na fonte de dados fará com que a view seja atualizada para representar o novo valor.
+
+A diretiva v-on realiza uma associação de evento que flui da view para a fonte de dados. Qualquer mudança na fonte de dados atualizará a view associada a ela, contanto que haja uma associação através de v-bind.
+( Para que as mudanças realizadas por v-on sejam atualizadas na view, é necessário combinar v-on com v-bind.)

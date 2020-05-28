@@ -3,9 +3,15 @@
   <!--apresentacao do componente-->
   <div class="corpo">
     <h1 class="centralizado">{{ titulo }}</h1>
-
+    <input
+      type="search"
+      class="filtro"
+      v-on:input="filtro = $event.target.value"
+      placeholder="Filtre por parte do titulo"
+    />
+    {{ filtro }}
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="(foto, index) in fotos" v-bind:key="index">
+      <li class="lista-fotos-item" v-for="(foto, index) in fotosComFiltro" v-bind:key="index">
         <meu-painel :titulo="foto.titulo">
           <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" />
         </meu-painel>
@@ -30,8 +36,23 @@ export default {
   data() {
     return {
       titulo: "VueStudy",
-      fotos: []
+      fotos: [],
+      filtro: ""
     };
+  },
+
+  computed: {
+    //toda computed property eh escrita como um metodo, mas na view/template utilizamos como uma propriedade, sem o ()
+    fotosComFiltro() {
+      //assim como no template/view podemos acessar uma propriedade da funcao data() acima, podemos acessar aqui
+      if (this.filtro) {
+        //filtrar
+        let exp = new RegExp(this.filtro.trim(), "i"); //o i eh de insensitive, tanto faz caixa alta ou baixa
+        return this.fotos.filter(foto => exp.test(foto.titulo));
+      } else {
+        return this.fotos;
+      }
+    }
   },
   created() {
     //assim que o componente eh criado, vamos buscar a principio os dados da nossa API
@@ -72,6 +93,11 @@ export default {
 }
 
 .imagem-responsiva {
+  width: 100%;
+}
+
+.filtro {
+  display: block;
   width: 100%;
 }
 </style>
