@@ -2,9 +2,11 @@
   <div class="painel">
     <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
     <!-- o slot eh o local onde inserimos outros elementos html quando um componente utiliza o nosso-->
-    <div class="painel-conteudo" v-show="visivel">
-      <slot></slot>
-    </div>
+    <transition name="painel-fade" ->
+      <div class="painel-conteudo" v-show="visivel">
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -13,10 +15,10 @@ export default {
   //propriedade props eh um array onde declaramos as propriedades do componente para serem reutilizadas em bind por outros componentes
   //onde declaramos por interpolacao dentro do nosso proprio componente para serem preenchidas
   props: ["titulo"],
-  data(){
+  data() {
     return {
       visivel: true
-    }
+    };
   }
 };
 </script>
@@ -45,5 +47,13 @@ export default {
 
 * {
   box-shadow: 5px 5px 5px black;
+}
+
+.painel-fade-enter, .painel-fade-leave-active{
+  opacity: 0;
+}
+
+.painel-fade-enter-active, .painel-fade-leave-active{
+  transition: opacity 0.4s;
 }
 </style>
