@@ -87,3 +87,14 @@ A diretiva v-bind realiza uma associação que flui da fonte de dados para a vie
 
 A diretiva v-on realiza uma associação de evento que flui da view para a fonte de dados. Qualquer mudança na fonte de dados atualizará a view associada a ela, contanto que haja uma associação através de v-bind.
 ( Para que as mudanças realizadas por v-on sejam atualizadas na view, é necessário combinar v-on com v-bind.)
+--------------------
+Diretiva v-show: se passamos o valor false, ele ganha por debaixo dos panos o display "none", mas se for true o elemento é exibido... Não pode ser declarado no slot diretamente, usa-se uma div se necessário
+--------------------
+O atalho para v-on é o @.
+
+Exemplo:
+
+De: v-on:click
+Para: @click
+
+Ou seja, os dois pontos : é o atalho do data-bind da fonte de dados para a view e o @ pé o data-bind da view para a fonte de dados.

@@ -1,17 +1,23 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo"> {{ titulo }} </h2>
+    <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
     <!-- o slot eh o local onde inserimos outros elementos html quando um componente utiliza o nosso-->
-    <slot class="painel-conteudo"></slot>
+    <div class="painel-conteudo" v-show="visivel">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    
-    //propriedade props eh um array onde declaramos as propriedades do componente para serem reutilizadas em bind por outros componentes
-    //onde declaramos por interpolacao dentro do nosso proprio componente para serem preenchidas
-    props: ['titulo']
+  //propriedade props eh um array onde declaramos as propriedades do componente para serem reutilizadas em bind por outros componentes
+  //onde declaramos por interpolacao dentro do nosso proprio componente para serem preenchidas
+  props: ["titulo"],
+  data(){
+    return {
+      visivel: true
+    }
+  }
 };
 </script>
 
@@ -38,6 +44,6 @@ export default {
 }
 
 * {
-    box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px black;
 }
 </style>
