@@ -104,3 +104,5 @@ Ou seja, os dois pontos : é o atalho do data-bind da fonte de dados para a view
 Para passarmos um evento ao um elemento componente importado, temos que usar o modificador .native
 
 Exemplo: <meu-botao @click.native="meuMetodo()"></meu-botao>
+-------------
+Uma diretiva pode suportar zero ou mais argumentos e eles servem para ditar a lógica principal da diretiva que deve ser executada. Já os modificadores podem ser usados pelos argumentos para que ativem ou não determinada lógica.
