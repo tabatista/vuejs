@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import {routes} from './routers';
+import './directives/Transform'; //ao importar assim, ele eh registrado automaticamente no global view object
 
 //registrando o modulo/plugin global view object, alguns artefatos do vue-resource vao estar disponiveis em todos os componentes da aplicacao
 Vue.use(VueResource);
