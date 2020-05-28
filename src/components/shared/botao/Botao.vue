@@ -4,7 +4,19 @@
 
 <script>
 export default {
-  props: ["tipo", "rotulo", "confirmacao", "estilo"],
+  //props: ["tipo", "rotulo", "confirmacao", "estilo"],
+  props: {
+    tipo: {
+      required: true,
+      type: String
+    },
+    rotulo: {
+      required: true,
+      type: String
+    },
+    confirmacao: Boolean,
+    estilo: String
+  },
   methods: {
     dispararAcao() {
       //quando usamos um data-binding com : ou v-bind em outro componente ao importar este aqui, ele avalia a expressao passada...
