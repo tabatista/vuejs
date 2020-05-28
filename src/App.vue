@@ -1,12 +1,32 @@
 <template>
-<!-- ora exibe um componente, ora exibe outro -->
+  <!-- ora exibe um componente, ora exibe outro -->
   <div class="corpo">
+    <!-- maneira manual de criar um link para o menu
+
+ <li><router-link to="/cadastro">Cadastro</router-link></li>
+ 
+    -->
+    <nav>
+      <ul>
+        <!-- criar o menu dinamicamente com base nas nossas rotas declaradas -->
+        <li v-for="(route, index) in routes" v-bind:key="index">
+          <router-link :to="route.path ? route.path : '/'">{{ route.titulo }}</router-link>
+        </li>
+      </ul>
+    </nav>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import { routes } from "./routers";
+export default {
+  data() {
+    return {
+      routes
+    };
+  }
+};
 </script>
 
 <style>

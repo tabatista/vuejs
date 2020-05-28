@@ -10,6 +10,8 @@ Webpack: module bundler
 live reloading: recurso do servidor para refletir imediatamente qualquer alteração em algum arquivo nosso no navegador
 ------------------
 {{ variavel }} : interpolação, dentro da tag script do componente existe a função data, que retorna um objeto javascript com propriedades, que são acessíveis através do template em data-binding unidirecional (da fonte de dados - script - para o template).
+-----------------
+O router-view serve para indicar para o template da página principal da aplicação o local no qual os demais componentes carregados através de rotas devem ser renderizados.
 
 Exemplo:
 
