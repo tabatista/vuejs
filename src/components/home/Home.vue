@@ -15,7 +15,7 @@
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
           <!-- se passamos uma string, nao precisa dos dois pontos porque nao ha data-bind -->
-          <meu-botao tipo="button" rotulo="REMOVER" @click.native="remover(foto)"></meu-botao>
+          <meu-botao tipo="button" rotulo="REMOVER" @botaoAtivado="remover(foto)"></meu-botao>
         </meu-painel>
       </li>
     </ul>
@@ -63,8 +63,7 @@ export default {
 
   methods: {
     //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
-    remover(foto) {
-      if (confirm("Confirma opercao?")) 
+    remover(foto) { 
         alert("Remover a foto " + foto.titulo);
     }
   },
