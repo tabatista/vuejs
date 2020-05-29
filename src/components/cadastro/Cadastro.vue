@@ -35,12 +35,14 @@
 import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva.vue";
 import Botao from "../shared/botao/Botao.vue";
 import Foto from "../../domain/foto/Foto";
-import FotoService from '../../domain/foto/FotoService';
+import FotoService from "../../domain/foto/FotoService";
 
 export default {
   data() {
+    //o nome id eh o coringa que declaramos na nossa rota 'altera'
     return {
-      foto: new Foto()
+      foto: new Foto(),
+      id: this.$route.params.id
     };
   },
   components: {
@@ -52,14 +54,18 @@ export default {
       //enviar dados para a API
       //1º parametro: endereco do servico
       //2ª parametro: os dados
-      this.service.cadastrar(this.foto)
-      .then(() => (this.foto = new Foto()),
+      this.service.cadastrar(this.foto).then(
+        () => (this.foto = new Foto()),
         err => console.error(err)
       );
     }
   },
-  created(){
+  created() {
     this.service = new FotoService(this.$resource);
+
+    if (this.id) {
+      this.service.buscar(this.id).then(foto => (this.foto = foto));
+    }
   }
 };
 </script>

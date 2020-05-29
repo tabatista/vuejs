@@ -7,6 +7,12 @@ export default class FotoService {
         this._resource = resource('v1/fotos{/id}');
     }
 
+    buscar(id) {
+        return this._resource
+            .get({ id })
+            .then(res => res.json());
+    }
+
     listar() {
         //query equivale ao metodo get
         //ao transformar os dados da resposta (res) em json, temos outra promise retornada
