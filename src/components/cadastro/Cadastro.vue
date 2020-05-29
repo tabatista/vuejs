@@ -6,31 +6,19 @@
     <form @submit.prevent="gravar()">
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input
-          id="titulo"
-          autocomplete="off"
-          v-model.lazy="foto.titulo"
-        />
+        <input id="titulo" autocomplete="off" v-model.lazy="foto.titulo" />
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input
-          id="url"
-          autocomplete="off"
-          v-model.lazy="foto.url"
-        />
+        <input id="url" autocomplete="off" v-model.lazy="foto.url" />
         <!-- com o v-show so exibimos a imagem se a url tiver um valor - lembrando que ele recebe um boolean -->
         <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo" />
       </div>
 
       <div class="controle">
         <label for="descricao">DESCRIÇÃO</label>
-        <textarea
-          id="descricao"
-          autocomplete="off"
-          v-model="foto.descricao"
-        ></textarea>
+        <textarea id="descricao" autocomplete="off" v-model="foto.descricao"></textarea>
       </div>
 
       <div class="centralizado">
@@ -46,7 +34,7 @@
 <script>
 import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva.vue";
 import Botao from "../shared/botao/Botao.vue";
-import Foto from '../../domain/foto/Foto';
+import Foto from "../../domain/foto/Foto";
 
 export default {
   data() {
@@ -60,10 +48,13 @@ export default {
   },
   methods: {
     gravar() {
-      console.log("enviar dados para a API");
-      console.log(this.foto);
-      
-      this.foto = new Foto();
+      //enviar dados para a API
+      //1º parametro: endereco do servico
+      //2ª parametro: os dados
+      this.$http.post("http://localhost:3000/v1/fotos", this.foto)
+      .then(() => (this.foto = new Foto()),
+        err => console.error(err)
+      );
     }
   }
 };
