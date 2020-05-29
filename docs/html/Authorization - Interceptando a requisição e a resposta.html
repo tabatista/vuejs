@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://cursos.alura.com.br/course/vue-parte2/task/25540 -->
+<html lang="pt-BR" data-product="alura" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+		
+
+
+
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script type="text/javascript" async="" src="./Authorization - Interceptando a requisição e a resposta_files/analytics.js.baixados"></script><script async="" src="./Authorization - Interceptando a requisição e a resposta_files/analytics.js.baixados"></script><script src="./Authorization - Interceptando a requisição e a resposta_files/1067810189950610" async=""></script><script async="" src="./Authorization - Interceptando a requisição e a resposta_files/fbevents.js.baixados"></script><script async="" src="./Authorization - Interceptando a requisição e a resposta_files/gtm.js.baixados"></script><script>
+	(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',4000,
+		{'GTM-TN542JN':true});
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-TN542JN');
+</script>
+<!-- End Google Tag Manager -->
+
+	<script type="text/javascript">
+        dataLayer.push({
+            'tipoPagina': 'Aula',
+            'curso': 'Vue.js parte 2: construindo Single Page Applications'
+        });
+	</script>
+
+	
+
+	<title>Vue.js parte 2: Aula 7 - Atividade 11 Interceptando a requisição e a resposta | Alura - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://cursos.alura.com.br/assets/images/alura/favicon.ico">
+	
+	<link href="./Authorization - Interceptando a requisição e a resposta_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/video-js.322ee8c7.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/silvermine-videojs-quality-selector.min.de928d55.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/prettify.4f36b4ca.css">
+
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/base.1e88adda.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/formattedText.afb4622e.css">
+	
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/container.16466c50.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/classPage.686decbe.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/menuSettings.c2c70910.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/taskProgress.73b1902d.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/taskMessageInfo.2f3d3681.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/alternativeList.3b452dc0.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/taskFeedback.1c82537d.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/markdown.c1e23fdd.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/finishSection.eae45901.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/phrase.416f092b.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/openquestion.c66aa640.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/video.48a68d14.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/singlechoice.4a8caf68.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/music.c02947a9.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/videodialog.80603de3.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/fillintheblank.92f59734.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/speakingpractice.c2461a40.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/pronunciationpractice.790ca935.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/repetition.13eb3517.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/genericVideo.9239c799.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/projectSubmit.e7032445.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/taskButtons.3fbd6adb.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/markdownEditor.9f06486b.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/audioPlayer.a615784e.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/notes.0c60a7da.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/dark-mode.26653973.css">
+	<link rel="stylesheet" href="./Authorization - Interceptando a requisição e a resposta_files/taskFeedbackAnswer.98ef221e.css">
+
+
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+	</style>
+
+	
+	
+	<script async="" src="./Authorization - Interceptando a requisição e a resposta_files/hotjar-1638253.js.baixados"></script><script src="./Authorization - Interceptando a requisição e a resposta_files/sha256.min.js.baixados"></script><script async="" src="./Authorization - Interceptando a requisição e a resposta_files/modules.aacb7ef51999cabcc7d1.js.baixados" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style></head>
+<body>
+
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<script> !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1067810189950610');
+fbq('track', 'PageView');
+</script>
+
+
+<section class="task" data-allow-answer="true" data-task-section-exam="false" data-task-type="hqexplanation" data-task-id="25540" data-author-id="394274" data-course-code="vue-parte2" data-section-name="Dicas e truques" data-section-id="4890" data-section-number="7" data-domain="cursos.alura.com.br" data-hasfeedbackanswer="false" data-url-prefix="/">
+	<section class="task-body">
+		
+		<header class="task-body-header">
+			<div class="container">
+				<h1 class="task-body-header-title">
+					<svg class="task-body-header-title-svg" aria-label="Atividade de Explicação">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<small>11</small>
+					<span class="task-body-header-title-text"> Interceptando a requisição e a resposta</span>
+				</h1>
+				
+					<div class="task-body-header-actions">
+						<a href="https://cursos.alura.com.br/course/vue-parte2/task/25540/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit">Próxima Atividade</a>
+					</div>
+				
+			</div>
+		</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Meu caderno do curso (beta)</h2>
+        <p class="class-notes-description">Este é seu caderno de anotações aqui na Alura. Todo o seu conteúdo fica vísivel apenas para você. Próximos passos para essa funcionalidade  no nosso<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas salvas</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Salvar caderno" data-saving-text="Salvando">
+                   Salvar caderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+<section class="hqExplanation" id="task-content">
+	<div class="container">
+	
+
+
+
+
+
+
+<div class="settings">
+	<button type="button" class="settings-button" aria-label="Configurações">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<span class="settings-box-title"></span>
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo noturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://cursos.alura.com.br/suggestions/new/vue-parte2/25540/question">Sugerir alteração</a></li>
+					
+				
+			
+			
+		</ul>
+	</div>
+</div>
+
+		<div class="formattedText" data-external-links="">
+			<p>Muitas vezes precisamos adicionar uma informação no cabeçalho das requisições assíncronas feitas para nosso servidor. Um exemplo disso é a adição do header <code>Authorization</code> que pode conter uma chave de acesso que libera o acesso da API para nossa aplicação.</p>
+<p>O problema é que nossa aplicação pode ter zilhões de lugares que realizam requisições com <code>http</code> ou <code>resource</code> e sair alterando todos esses lugares com certeza nos gerará problemas de manutenção. No entanto, podemos solucionar o problema elegantemente através de interceptadores. </p>
+<p>O módulo VueResource permite centralizarmos em um único local o acesso à requisição e resposta realizadas pelos serviços <code>http</code> e <code>resource</code> permitindo que sejam adicionadas informações adicionais. </p>
+<p>Para isso, vamos abrir nosso arquivo <code>alurapic/src/main.js</code> e vamos adicionar um simples interceptador que adiciona um header na requisição antes de ser enviada e que exibe os dados vindos do servidor de qualquer resposta:</p>
+<pre class="prettyprint"><code><span class="com">// src/main.js</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Vue</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'vue'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="typ">App</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'./App.vue'</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="typ">VueResource</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'vue-resource'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="typ">VueRouter</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'vue-router'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> routes </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'./routes'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'./directives/Transform'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="typ">VeeValidate</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'vee-validate'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> msg </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'./pt_BR'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'bootstrap/dist/css/bootstrap.css'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'./assets/css/teste.css'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'./assets/js/teste.js'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="str">'bootstrap/dist/js/bootstrap.js'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="typ">Vue</span><span class="pun">.</span><span class="kwd">use</span><span class="pun">(</span><span class="typ">VueResource</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">Vue</span><span class="pun">.</span><span class="pln">http</span><span class="pun">.</span><span class="pln">options</span><span class="pun">.</span><span class="pln">root </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://localhost:3000'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="typ">Vue</span><span class="pun">.</span><span class="pln">http</span><span class="pun">.</span><span class="pln">interceptors</span><span class="pun">.</span><span class="pln">push</span><span class="pun">((</span><span class="pln">req</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">next</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">// é possível colocar informações no header antes do envio da requisição</span><span class="pln">
+    req</span><span class="pun">.</span><span class="pln">headers</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="str">'Authorization'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'informação de segurança aqui'</span><span class="pun">);</span><span class="pln">
+    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Lidando com o request'</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">next</span><span class="pun">(</span><span class="pln">res </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Lidando com a resposta'</span><span class="pun">)</span><span class="pln">
+      </span><span class="com">// é possível acessar os dados da reposta e realizar transformações antes</span><span class="pln">
+      console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">res</span><span class="pun">.</span><span class="pln">body</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+
+</span><span class="pun">});</span><span class="pln">
+
+</span><span class="com">// código posterior omitido</span></code></pre>
+<p>Assim que aplicação for recarregada ela buscará as fotos da nossa API. Verifique o console do navegador pelas mensagens impressas pelo interceptador. </p>
+
+		</div>
+	</div>
+</section>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+
+<a href="https://cursos.alura.com.br/forum/curso-vue-parte2/exercicio-interceptando-a-requisicao-e-a-resposta/25540/novo" class=" task-actions-button task-actions-button-forum" target="_blank">Discutir no Forum</a>
+
+				
+				
+				
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/25540/next" class="task-actions-button task-body-actions-button task-actions-button-next">Próxima Atividade</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menu/Fechar menu" aria-label="Abrir menu/Fechar menu" type="button" class="openMenu-button task-body-button "></button>
+
+<aside class="task-menu" style="position: fixed; transform: translateY(0px);">
+	<section class="task-menu-header">
+		<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-menu-button "></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://cursos.alura.com.br/course/vue-parte2" title="Ir para página do curso">
+				
+					
+					
+						<img src="./Authorization - Interceptando a requisição e a resposta_files/vue-parte2.svg" alt="ícone Vue.js parte 2: construindo Single Page Applications" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Vue.js parte 2: construindo Single Page Applications</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">93%</span>
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 93%, transparent 93%);"></span>
+				</div>
+			
+		</div>
+	</section>
+	
+	<div class="task-menu-others task-menu-notes">
+		<button class="task-menu-others-link class-notes-button" title="Abrir caderno">Abrir caderno</button>
+	</div>
+
+	<section class="task-menu-section">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>07</strong>
+				<span>de 08</span></span>
+			<h3 class="task-menu-section-title-text">
+				Dicas e truques
+			</h3>
+		</div>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Atividades
+			<span>11 de 13</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24762" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Importando o Bootstrap">
+							Importando o Bootstrap
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">06min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24763" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Configurando o Webpack para usar novos loaders">
+							Configurando o Webpack para usar novos loaders
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24764" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Importando seus arquivos CSS">
+							Importando seus arquivos CSS
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">02min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24795" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade sem Resposta do Aluno concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Revisão 1">
+							Revisão 1
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24765" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Estilizando nosso componentes com SASS">
+							Estilizando nosso componentes com SASS
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">04min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24766" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Isolando melhor nossos estilos com SASS">
+							Isolando melhor nossos estilos com SASS
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">02min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24798" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade sem Resposta do Aluno concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Revisão 2">
+							Revisão 2
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24767" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Importando seus arquivos JS e peculiaridades de objetos globais">
+							Importando seus arquivos JS e peculiaridades de objetos globais
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">06min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24768" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Carregamento de imagens">
+							Carregamento de imagens
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">04min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/25456" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Explicação concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Trocando o endereço da API em produção">
+							Trocando o endereço da API em produção
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/25540" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Explicação concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">11</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Interceptando a requisição e a resposta">
+							Interceptando a requisição e a resposta
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/25436" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">12</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber mais: a diretiva v-for e a propriedade key">
+							Para saber mais: a diretiva v-for e a propriedade key
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/vue-parte2/task/24817" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Atividade sem Resposta do Aluno não concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">13</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Revisão 3">
+							Revisão 3
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Aulas
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/vue-parte2/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="4796">01. Criando nossa própria diretiva</option>
+			
+				<option value="4797">02. Lidando com formulários</option>
+			
+				<option value="4800">03. Organizando ainda melhor nosso código</option>
+			
+				<option value="4801">04. Lidando com alteração de dados</option>
+			
+				<option value="4808">05. Validando formulários</option>
+			
+				<option value="4809">06. O build do projeto</option>
+			
+				<option value="4890" selected="">07. Dicas e truques</option>
+			
+				<option value="4822">08. Considerações finais</option>
+			
+		</select>
+	</section>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Outros Links
+		</h2>
+		<a href="https://cursos.alura.com.br/forum/curso-vue-parte2/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para o fórum do curso">Fórum</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para a página principal">Trocar Curso</a>
+
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://cursos.alura.com.br/user/thaispoentes" title="Ir para sua página de usuário">
+			<img src="./Authorization - Interceptando a requisição e a resposta_files/229c7e6df985bea0fcefaee1e79e0ebd.png" alt="Gravatar de Thais Poentes" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Thais Poentes</span>
+					<span class="task-menu-footer-detalhes-xp">
+						54.8k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-footer-logo">
+			<img src="./Authorization - Interceptando a requisição e a resposta_files/icon-menu-alura.svg" alt="Logo da Alura" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para a página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://cursos.alura.com.br/course/vue-parte2/task/25540" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+	
+		<!-- Hotjar Tracking Code for https://cursos.alura.com.br -->
+		<script>
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:1638253,hjsv:6};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+		</script>
+	
+
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/jquery-2.1.3.min.32015dd4.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/buttonToggle.js.baixados" async=""></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/sectionMenu.9c6d35d8.js.baixados" async=""></script>
+
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/marked.min.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/markdownEditor.07eebbca.js.baixados" async=""></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/caret.js.baixados" async=""></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/keydownWatchers.f20680cd.js.baixados" async=""></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/prettify.min.49a10a85.js.baixados" async=""></script>
+
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/preventsMultipleInteractions.ccefe158.js.baixados" async=""></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/assessment.050f656f.js.baixados" async=""></script>
+
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/menuSettings.586ae39e.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/aria.1c51db86.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/ProjectSubmit.1da29f73.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/classPage.8b2d2097.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/phrase.dda08bd7.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/feedback.98f71e18.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/ExtraContentProgressRequest.8fae0e05.js.baixados"></script>
+	
+	
+
+	
+	
+	
+	
+
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/partitura.c5cff29c.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/audioProgress.71d14880.js.baixados"></script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/audioPlayer.9e2e5334.js.baixados"></script>
+
+		
+
+	
+
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/darkMode.65d4b699.js.baixados">
+	</script>
+
+	
+		
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42101548-1', 'alura.com.br');
+
+    
+        ga('set', 'userId', '394274');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+	<script src="./Authorization - Interceptando a requisição e a resposta_files/ClassNotes.1b143ac5.js.baixados">
+	</script>
+<script>
+	new ClassNotes().refreshListeners();
+</script>
+
+
+
+
+
+
+<script src="./Authorization - Interceptando a requisição e a resposta_files/MarkdownProcessing.f83261d2.js.baixados"></script>
+<script>
+	new MarkdownProcessing("https://cursos.alura.com.br").onLoad();
+</script><script type="text/javascript" id="">function eventClick(d,a,b,c){a.includes(" \x3e ")&&(a=document.querySelector(a).textContent);b.includes(" \x3e ")&&(b=document.querySelector(b).textContent);(c=document.querySelector(c))&&c.addEventListener("click",function(){dataLayer.push({event:"gaEvent",eventCategory:d,eventAction:a,eventLabel:b})})}eventClick("Menu","Logo","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e a");eventClick("Menu","Todos os Cursos","Abrir","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e div");
+eventClick("Menu","Todos os Cursos","Cursos de Mobile","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--mobile \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Programa\u00e7\u00e3o","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--programacao \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Front-end","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--front-end \x3e a");
+eventClick("Menu","Todos os Cursos","Cursos de Infraestrutura","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--infraestrutura \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Design \x26 UX","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--design-ux \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Business","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--business \x3e a");
+eventClick("Menu","Carreiras e Forma\u00e7\u00f5es","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(2)");eventClick("Menu","Como funciona","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(3)");eventClick("Menu","Para empresas","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(4)");
+eventClick("Menu","Entrar","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a:nth-child(1)");eventClick("Menu","Matricule-se","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a.header__nav__link.header__nav__link--cta");eventClick("Menu","Busca","Abrir","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(2) \x3e a");
+eventClick("Menu","Busca","Buscar","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(1) \x3e form \x3e button");eventClick("Footer","Primeira Se\u00e7\u00e3o","Alura","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-logos-home");eventClick("Footer","Primeira Se\u00e7\u00e3o","Caelum","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-link-caelum");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Apostilas","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(1) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Planos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(2) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Todos os Cursos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(3) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Carreiras","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(4) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Instrutores","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(5) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Como virar Instrutor","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(6) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Ranking","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(7) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Blog da Alura","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(8) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Podcast Nerdtech","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(9) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Pol\u00edtica de Privacidade","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(10) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Termos de Uso","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(11) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Sobre N\u00f3s","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(12) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Perguntas Frequentes","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(13) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Youtube","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Facebook","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Twitter","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(3)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Hipsters","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(4)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Google Play","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","App Store","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Fale Conosco","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-contato");eventClick("Footer","Primeira Se\u00e7\u00e3o","Empresa?","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-empresa");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(2)","body \x3e nav \x3e div \x3e a:nth-child(2)");
+eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(3)","body \x3e nav \x3e div \x3e a:nth-child(3)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(4)","body \x3e nav \x3e div \x3e a:nth-child(4)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(5)","body \x3e nav \x3e div \x3e a:nth-child(5)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(6)","body \x3e nav \x3e div \x3e a:nth-child(6)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(8)","body \x3e nav \x3e div \x3e a:nth-child(8)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(9)","body \x3e nav \x3e div \x3e a:nth-child(9)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(10)","body \x3e nav \x3e div \x3e a:nth-child(10)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(11)","body \x3e nav \x3e div \x3e a:nth-child(11)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(12)","body \x3e nav \x3e div \x3e a:nth-child(12)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(14)","body \x3e nav \x3e div \x3e a:nth-child(14)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(15)","body \x3e nav \x3e div \x3e a:nth-child(15)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(16)","body \x3e nav \x3e div \x3e a:nth-child(16)");
+eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(17)","body \x3e nav \x3e div \x3e a:nth-child(17)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(18)","body \x3e nav \x3e div \x3e a:nth-child(18)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(20)","body \x3e nav \x3e div \x3e a:nth-child(20)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(21)","body \x3e nav \x3e div \x3e a:nth-child(21)");
+eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(22)","body \x3e nav \x3e div \x3e a:nth-child(22)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(23)","body \x3e nav \x3e div \x3e a:nth-child(23)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(24)","body \x3e nav \x3e div \x3e a:nth-child(24)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(26)","body \x3e nav \x3e div \x3e a:nth-child(26)");
+eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(27)","body \x3e nav \x3e div \x3e a:nth-child(27)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(28)","body \x3e nav \x3e div \x3e a:nth-child(28)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(29)","body \x3e nav \x3e div \x3e a:nth-child(29)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(30)","body \x3e nav \x3e div \x3e a:nth-child(30)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(32)","body \x3e nav \x3e div \x3e a:nth-child(32)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(33)","body \x3e nav \x3e div \x3e a:nth-child(33)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(34)","body \x3e nav \x3e div \x3e a:nth-child(34)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(35)","body \x3e nav \x3e div \x3e a:nth-child(35)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(36)","body \x3e nav \x3e div \x3e a:nth-child(36)");</script><script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script><iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./Authorization - Interceptando a requisição e a resposta_files/box-469cf41adb11dc78be68c1ae7f9457a4.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe></body></html>
