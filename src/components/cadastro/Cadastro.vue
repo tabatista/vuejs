@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1 class="centralizado">Cadastro</h1>
-    <h2 class="centralizado"></h2>
+    <h2 v-if="foto._id" class="centralizado">Alterando</h2>
+    <h2 v-else class="centralizado">Incluindo</h2>
 
     <form @submit.prevent="gravar()">
       <div class="controle">
@@ -55,7 +56,13 @@ export default {
       //1º parametro: endereco do servico
       //2ª parametro: os dados
       this.service.cadastrar(this.foto).then(
-        () => (this.foto = new Foto()),
+        () => {
+          if(this.id){
+            //redireciona para a pagina inicial se for alteracao
+            this.$router.push({name: 'home'})
+          }
+          this.foto = new Foto();
+        },
         err => console.error(err)
       );
     }
