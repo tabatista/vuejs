@@ -19,6 +19,10 @@
             :url="foto.url"
             :titulo="foto.titulo"
           ></imagem-responsiva>
+
+          <router-link :to="{name: 'altera', params: {id: foto._id}}">
+            <meu-botao tipo="button" rotulo="ALTERAR"></meu-botao>
+          </router-link>
           <!-- se passamos uma string, nao precisa dos dois pontos porque nao ha data-bind -->
           <meu-botao
             tipo="button"
@@ -87,7 +91,7 @@ export default {
     //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
     remover(foto, index) {
       //passamos a url da api com o id da foto
-     this.service.apagar(foto._id).then(
+      this.service.apagar(foto._id).then(
         () => {
           this.fotos.splice(index, 1);
           this.mensagem = "Foto excluida com sucesso";

@@ -108,3 +108,16 @@ Exemplo: <meu-botao @click.native="meuMetodo()"></meu-botao>
 Uma diretiva pode suportar zero ou mais argumentos e eles servem para ditar a lógica principal da diretiva que deve ser executada. Já os modificadores podem ser usados pelos argumentos para que ativem ou não determinada lógica.
 --------------
 A diretiva v-model faz o data binding bidirecional sem a necessidade de declarar o @ e o :.
+------------
+É possível passar um coringa para a URL(path) da rota configurada.
+
+Exemplo: path: '/cadastrar/:id'
+
+Onde o coringa é o /:id
+
+Assim, quando utilizarmos o coringa, devemos declarar no atributo params do router-link utilizado, com o mesmo nome. 
+
+Exemplo:
+
+<router-link :to="{name: 'cadastro', params: {id: foto._id})">
+
