@@ -25,7 +25,7 @@
             rotulo="REMOVER"
             :confirmacao="true"
             estilo="perigo"
-            @botaoAtivado="remover(foto)"
+            @botaoAtivado="remover(foto, index)"
           ></meu-botao>
         </meu-painel>
       </li>
@@ -82,10 +82,14 @@ export default {
 
   methods: {
     //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
-    remover(foto) {
+    remover(foto, index) {
       //passamos a url da api com o id da foto
       this.$http.delete(`http://localhost:3000/v1/fotos/${foto._id}`).then(
-        () => (this.mensagem = "Foto excluida com sucesso"),
+        () => {
+          this.fotos.splice(index, 1);
+          this.mensagem = "Foto excluida com sucesso";
+
+        },
         err => {
           console.error(err);
           this.mensagem = "Nao foi possivel excluir a foto";
