@@ -120,4 +120,5 @@ Assim, quando utilizarmos o coringa, devemos declarar no atributo params do rout
 Exemplo:
 
 <router-link :to="{name: 'cadastro', params: {id: foto._id})">
-
+-------------
+O módulo VeeValidate: é um plugin não oficial do Vue, mas bem utilizado. Utilizado para validações...
