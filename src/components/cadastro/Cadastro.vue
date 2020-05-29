@@ -51,11 +51,14 @@ export default {
       //enviar dados para a API
       //1º parametro: endereco do servico
       //2ª parametro: os dados
-      this.$http.post("v1/fotos", this.foto)
+      this.resource.save(this.foto)
       .then(() => (this.foto = new Foto()),
         err => console.error(err)
       );
     }
+  },
+  created(){
+    this.resource = this.$resource('v1/fotos/');
   }
 };
 </script>

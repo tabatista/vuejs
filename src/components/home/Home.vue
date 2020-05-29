@@ -84,11 +84,10 @@ export default {
     //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
     remover(foto, index) {
       //passamos a url da api com o id da foto
-      this.$http.delete(`v1/fotos/${foto._id}`).then(
+      this.resource.delete({ id: foto._id }).then(
         () => {
           this.fotos.splice(index, 1);
           this.mensagem = "Foto excluida com sucesso";
-
         },
         err => {
           console.error(err);
@@ -100,13 +99,16 @@ export default {
   created() {
     //assim que o componente eh criado, vamos buscar a principio os dados da nossa API
     //this eh referente ao proprio componente, o vue.js consegue acessar facilmente as propriedades do objeto da funcao data
-    //$http eh o artefato do modulo vue-resource
 
-    //invocamos o servico get passando sua url, temos como retorno uma promise
-    let promise = this.$http.get("v1/fotos");
+    //declaramos o resource para utilizar as requisicoes http para API
+    //criamos esse coringa {/id} para utilizar o delete do resource criado
+    //passando no corpo no momento da delecao com o mesmo nome, nesse caso "id"
+    this.resource = this.$resource("v1/fotos/{id}");
 
+    //query equivale ao metodo get
     //ao transformar os dados da resposta (res) em json, temos outra promise retornada
-    promise
+    this.resource
+      .query()
       .then(res => res.json())
       .then(
         fotosRes => (this.fotos = fotosRes),
