@@ -126,3 +126,9 @@ O módulo VeeValidate: é um plugin não oficial do Vue, mas bem utilizado. Util
 Para fazer um deploy local, basta rodar o comando npm run build e utilizar o build.js dentro da pasta dist e o index.html
 
 Como exemplo, coloquei a pasta server com um servidor local, já com esses arquivos lá dentro, dentro da pasta public.
+------------
+Static é o diretório onde deixamos nossas imagens. Depois, basta usar o elemento html apontando normalmente
+
+<img src="/static/angry.jpg" alt="">
+
+Obs.: para deploy, é necessário levar a pasta static junto com a dist e index.html
