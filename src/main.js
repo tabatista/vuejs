@@ -2,9 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
-import {routes} from './routers';
+import { routes } from './routers';
 import './directives/Transform'; //ao importar assim, ele eh registrado automaticamente no global view object
 import VeeValidate from 'vee-validate';
+import msg from './pt_BR';
 
 //registrando o modulo/plugin global view object, alguns artefatos do vue-resource vao estar disponiveis em todos os componentes da aplicacao
 Vue.use(VueResource);
@@ -24,7 +25,14 @@ const router = new VueRouter({
 //exemplo
 //const router = new VueRouter({routes});
 
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, {
+  locale: 'pt_BR',
+  dictionary: {
+    pt_BR: {
+      messages: msg
+    }
+  }
+});
 
 //view instance - a cola entre o componente e o vue
 //el: elemento do index.html para ser o alvo do componente
