@@ -7,6 +7,7 @@ import './directives/Transform'; //ao importar assim, ele eh registrado automati
 
 //registrando o modulo/plugin global view object, alguns artefatos do vue-resource vao estar disponiveis em todos os componentes da aplicacao
 Vue.use(VueResource);
+Vue.http.options.root = 'http://localhost:3000';
 
 //registrando para o uso de rotas
 Vue.use(VueRouter);
