@@ -1,4 +1,4 @@
-import Cadastro from './components/cadastro/Cadastro.vue';
+const Cadastro = () => System.import('./components/cadastro/Cadastro.vue'); //carregamento assincrono
 import Home from './components/home/Home.vue';
 
 //uma rota eh um objeto js com duas propriedades
