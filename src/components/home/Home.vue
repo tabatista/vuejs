@@ -44,6 +44,9 @@ import Botao from "../shared/botao/Botao";
 // importou  diretiva. Tem que adicionar na propriedade directives logo abaixo!
 import transform from "../../directives/Transform";
 
+//para usarmos os servicos da API
+import FotoService from "../../domain/foto/FotoService";
+
 export default {
   //onde declaramos como o componente sera utilizado
   components: {
@@ -84,7 +87,7 @@ export default {
     //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
     remover(foto, index) {
       //passamos a url da api com o id da foto
-      this.resource.delete({ id: foto._id }).then(
+     this.service.apagar(foto._id).then(
         () => {
           this.fotos.splice(index, 1);
           this.mensagem = "Foto excluida com sucesso";
@@ -97,23 +100,14 @@ export default {
     }
   },
   created() {
+    this.service = new FotoService(this.$resource);
     //assim que o componente eh criado, vamos buscar a principio os dados da nossa API
     //this eh referente ao proprio componente, o vue.js consegue acessar facilmente as propriedades do objeto da funcao data
 
-    //declaramos o resource para utilizar as requisicoes http para API
-    //criamos esse coringa {/id} para utilizar o delete do resource criado
-    //passando no corpo no momento da delecao com o mesmo nome, nesse caso "id"
-    this.resource = this.$resource("v1/fotos/{id}");
-
-    //query equivale ao metodo get
-    //ao transformar os dados da resposta (res) em json, temos outra promise retornada
-    this.resource
-      .query()
-      .then(res => res.json())
-      .then(
-        fotosRes => (this.fotos = fotosRes),
-        err => console.error(err)
-      );
+    this.service.listar().then(
+      fotosRes => (this.fotos = fotosRes),
+      err => console.error(err)
+    );
   }
 };
 </script>

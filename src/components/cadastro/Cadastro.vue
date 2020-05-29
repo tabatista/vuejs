@@ -35,6 +35,7 @@
 import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva.vue";
 import Botao from "../shared/botao/Botao.vue";
 import Foto from "../../domain/foto/Foto";
+import FotoService from '../../domain/foto/FotoService';
 
 export default {
   data() {
@@ -51,14 +52,14 @@ export default {
       //enviar dados para a API
       //1º parametro: endereco do servico
       //2ª parametro: os dados
-      this.resource.save(this.foto)
+      this.service.cadastrar(this.foto)
       .then(() => (this.foto = new Foto()),
         err => console.error(err)
       );
     }
   },
   created(){
-    this.resource = this.$resource('v1/fotos/');
+    this.service = new FotoService(this.$resource);
   }
 };
 </script>
