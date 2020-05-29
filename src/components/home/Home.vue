@@ -96,10 +96,9 @@ export default {
           this.fotos.splice(index, 1);
           this.mensagem = "Foto excluida com sucesso";
         },
-        err => {
-          console.error(err);
-          this.mensagem = "Nao foi possivel excluir a foto";
-        }
+        err => 
+          this.mensagem = err.message
+        
       );
     }
   },
@@ -110,7 +109,7 @@ export default {
 
     this.service.listar().then(
       fotosRes => (this.fotos = fotosRes),
-      err => console.error(err)
+      err => this.mensagem = err.message
     );
   }
 };

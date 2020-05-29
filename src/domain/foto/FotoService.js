@@ -18,7 +18,10 @@ export default class FotoService {
         //ao transformar os dados da resposta (res) em json, temos outra promise retornada
         return this._resource
             .query()
-            .then(res => res.json())
+            .then(res => res.json(), err => {
+                console.error(err);
+                throw new Error('Nao foi possivel obter as fotos. Tente mais tarde');
+            })
     }
 
     cadastrar(foto) {
@@ -30,6 +33,10 @@ export default class FotoService {
     }
 
     apagar(id) {
-        return this._resource.delete({ id });
+        return this._resource.delete({ id })
+        .then(null, err => {
+            console.error(err);
+            throw new Error('Nao foi possivel remover a foto.');
+        });
     }
 }
