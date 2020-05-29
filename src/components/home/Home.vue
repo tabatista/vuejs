@@ -3,6 +3,7 @@
   <!--apresentacao do componente-->
   <div>
     <h1 class="centralizado">{{ titulo }}</h1>
+    <p v-show="mensagem" class="centralizado">{{ mensagem }}</p>
     <input
       type="search"
       class="filtro"
@@ -13,7 +14,11 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="(foto, index) in fotosComFiltro" v-bind:key="index">
         <meu-painel :titulo="foto.titulo">
-          <imagem-responsiva v-meu-transform:scale.animate="1.2" :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
+          <imagem-responsiva
+            v-meu-transform:scale.animate="1.2"
+            :url="foto.url"
+            :titulo="foto.titulo"
+          ></imagem-responsiva>
           <!-- se passamos uma string, nao precisa dos dois pontos porque nao ha data-bind -->
           <meu-botao
             tipo="button"
@@ -37,7 +42,7 @@ import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva";
 import Botao from "../shared/botao/Botao";
 
 // importou  diretiva. Tem que adicionar na propriedade directives logo abaixo!
-import transform from '../../directives/Transform';
+import transform from "../../directives/Transform";
 
 export default {
   //onde declaramos como o componente sera utilizado
@@ -48,7 +53,7 @@ export default {
   },
 
   directives: {
-    'meu-transform': transform
+    "meu-transform": transform
   },
 
   //os dados do componente
@@ -56,7 +61,8 @@ export default {
     return {
       titulo: "VueStudy",
       fotos: [],
-      filtro: ""
+      filtro: "",
+      mensagem: ""
     };
   },
 
@@ -77,7 +83,14 @@ export default {
   methods: {
     //aqui declaramos metodos que podemos invocar a partir da interacao dos componentes
     remover(foto) {
-      alert("Remover a foto " + foto.titulo);
+      //passamos a url da api com o id da foto
+      this.$http.delete(`http://localhost:3000/v1/fotos/${foto._id}`).then(
+        () => (this.mensagem = "Foto excluida com sucesso"),
+        err => {
+          console.error(err);
+          this.mensagem = "Nao foi possivel excluir a foto";
+        }
+      );
     }
   },
   created() {
