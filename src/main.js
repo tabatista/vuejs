@@ -7,9 +7,6 @@ import './directives/Transform'; //ao importar assim, ele eh registrado automati
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
 
-//import css dentro de um modulo
-import 'bootstrap/dist/css/bootstrap.css';
-
 //registrando o modulo/plugin global view object, alguns artefatos do vue-resource vao estar disponiveis em todos os componentes da aplicacao
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
